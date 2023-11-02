@@ -58,6 +58,7 @@ const Slider = () => {
 							name="radio-button"
 							checked={radioIdx === index}
 							onClick={() => handlePaginationClick(radioIdx)}
+                            readOnly
 						/>
 					))}
 				</div>
