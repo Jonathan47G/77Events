@@ -24,7 +24,7 @@ const Slider = () => {
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [index]);
+	}, [index, byDateDesc]);
 
 	const handlePaginationClick = (radioIdx) => {
 		setIndex(radioIdx);

@@ -12,9 +12,6 @@ const mockContactApi = () =>
 
 const Form = ({ onSuccess, onError }) => {
 	const [sending, setSending] = useState(false);
-	const [confirmation, setConfirmation] = useState(false);
-
-	const confirmationMessage = "Message envoyé !";
 
 	const sendContact = useCallback(
 		async (evt) => {
@@ -24,9 +21,8 @@ const Form = ({ onSuccess, onError }) => {
 			try {
 				await mockContactApi();
 				setSending(false);
-				setConfirmation(true);
+				onSuccess();
 				setTimeout(() => {
-					setConfirmation(false);
 					 window.location.reload();
 				 }, 3000);
 			} catch (err) {
@@ -63,9 +59,7 @@ const Form = ({ onSuccess, onError }) => {
 					<Button type={BUTTON_TYPES.SUBMIT} disabled={sending}>
 						{sending ? "En cours" : "Envoyer"}
 					</Button>
-					{confirmation && (
-						<p className="text-msg-envoyer">{confirmationMessage}</p>
-					)}
+					
 				</div>
 				<div className="col">
 					<Field
